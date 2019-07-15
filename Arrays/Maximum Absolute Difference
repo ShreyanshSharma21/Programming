@@ -1,0 +1,24 @@
+int Solution::maxArr(vector<int> &A) {
+    vector<int> a,b;
+    int n = A.size();
+    for(int i=0;i<n;i++){
+        a.emplace_back(A[i]+i+1);
+        b.emplace_back(A[i]-i+1);
+    }
+    int mx=a[0],mx2=b[0],mn=a[0],mn2=b[0];
+    for(int i=0;i<n;i++){
+        if(a[i]>mx){
+            mx=a[i];
+        }
+        if(a[i]<mn){
+            mn = a[i];
+        }
+        if(b[i]>mx2){
+            mx2=b[i];
+        }
+        if(b[i]<mn2){
+            mn2 = b[i];
+        }
+    }
+    return max(abs(mx - mn),abs(mx2-mn2));
+}
